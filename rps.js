@@ -25,7 +25,7 @@ const computerScore = 0;
 function playRound(humanChoice, computerChoice) {
   if (humanChoice === "rock") {
     if (computerChoice === "rock") {
-      console.log("Draw!");
+      console.log("Tie!");
       return null;
     }
     if (computerChoice === "paper") {
@@ -43,7 +43,7 @@ function playRound(humanChoice, computerChoice) {
       return true;
     }
     if (computerChoice === "paper") {
-      console.log("Draw!");
+      console.log("Tie!");
       return null;
     }
     if (computerChoice === "scissors") {
@@ -61,7 +61,7 @@ function playRound(humanChoice, computerChoice) {
       return true;
     }
     if (computerChoice === "scissors") {
-      console.log("Draw!");
+      console.log("Tie!");
       return null;
     }
   }
