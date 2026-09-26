@@ -1,10 +1,10 @@
 function getComputerChoice() {
   let computer = Math.random();
   if (computer <= 0.33) {
-    console.log("Computer chose: Scissors");
+    console.log("Computer chose: Rock");
     return "rock";
-  } else if (computer >= 0.33 && computer < 0.66) {
-    console.log("Computer chose: Scissors");
+  } else if (computer > 0.33 && computer < 0.66) {
+    console.log("Computer chose: Paper");
     return "paper";
   } else if (computer >= 0.66) {
     console.log("Computer chose: Scissors");
@@ -74,17 +74,18 @@ function Playgame() {
   while ((computerScore < 5 && humanScore < 5)) {
     const humanSelection = getHumanChoice();
     const computerSelection = getComputerChoice();
+    const result = playRound(humanSelection, computerSelection);
 
-    if (playRound(humanSelection, computerSelection)) {
+    if (result === true) {
       humanScore++;
-    } else {
+    } else if(result === false) {
       computerScore++;
     }
     console.log("Score -> HUMAN: " + humanScore + " Computer: " + computerScore)
 
-    if(computerScore == 5){
+    if(computerScore === 5){
         console.log("COMPUTER WINS!")
-    } else if(humanScore == 5){
+    } else if(humanScore === 5){
         console.log("HUMAN WINS!")
     }
   }
