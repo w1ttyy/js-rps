@@ -19,9 +19,6 @@ function getHumanChoice() {
   return human.toLowerCase();
 }
 
-const humanScore = 0;
-const computerScore = 0;
-
 function playRound(humanChoice, computerChoice) {
   if (humanChoice === "rock") {
     if (computerChoice === "rock") {
