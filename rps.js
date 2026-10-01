@@ -49,32 +49,6 @@ function playRound(humanChoice, computerChoice) {
   }
 }
 
-// function Playgame() {
-//   let computerScore = 0;
-//   let humanScore = 0;
-
-//   while ((computerScore < 5 && humanScore < 5)) {
-//     const humanSelection = getHumanChoice();
-//     const computerSelection = getComputerChoice();
-//     const result = playRound(humanSelection, computerSelection);
-
-//     if (result === true) {
-//       humanScore++;
-//     } else if(result === false) {
-//       computerScore++;
-//     }
-//     console.log("Score -> HUMAN: " + humanScore + " Computer: " + computerScore)
-
-//     if(computerScore === 5){
-//         console.log("COMPUTER WINS!")
-//     } else if(humanScore === 5){
-//         console.log("HUMAN WINS!")
-//     }
-//   }
-// }
-
-// Playgame();
-
 body = document.querySelector("body");
 
 const buttonRock = document.createElement("button");
