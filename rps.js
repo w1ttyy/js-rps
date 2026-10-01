@@ -16,35 +16,35 @@ function getComputerChoice() {
 function playRound(humanChoice, computerChoice) {
   if (humanChoice === "rock") {
     if (computerChoice === "rock") {
-      return "Tie!";
+      return null;
     }
     if (computerChoice === "paper") {
-      return "Computer wins!";
+      return false;
     }
     if (computerChoice === "scissors") {
-      return "Human wins!";
+      return true;
     }
   }
   if (humanChoice === "paper") {
     if (computerChoice === "rock") {
-      return "Human wins!";
+      return true;
     }
     if (computerChoice === "paper") {
-      return "Tie!";
+      return null;
     }
     if (computerChoice === "scissors") {
-      return "Computer wins!";
+      return false;
     }
   }
   if (humanChoice === "scissors") {
     if (computerChoice === "rock") {
-      return "Computer wins!";
+      return false;
     }
     if (computerChoice === "paper") {
-      return "Human wins!";
+      return true;
     }
     if (computerChoice === "scissors") {
-      return "Tie!";
+      return null;
     }
   }
 }
@@ -83,27 +83,53 @@ const buttonPaper = document.createElement("button");
 buttonPaper.id = "paper";
 const buttonScissors = document.createElement("button");
 buttonScissors.id = "scissors";
-const resultDiv = document.createElement("div");
+const roundResultDiv = document.createElement("div");
+const scoreDiv = document.createElement("div");
 
 buttonRock.textContent = "Rock";
 buttonPaper.textContent = "Paper";
 buttonScissors.textContent = "Scissors";
-resultDiv.id = "result";
+roundResultDiv.id = "round-result";
+scoreDiv.id = "score";
 
 body.appendChild(buttonRock);
 body.appendChild(buttonPaper);
 body.appendChild(buttonScissors);
-body.appendChild(resultDiv);
+body.appendChild(roundResultDiv);
+body.appendChild(scoreDiv);
 
-buttonRock.addEventListener("click", () => {
+let humanScore = 0;
+let computerScore = 0;
+
+handleClick = (humanChoice) => {
+  if (humanScore === 5 || computerScore === 5) return;
+
   const computerChoice = getComputerChoice();
-  resultDiv.textContent = playRound("rock", computerChoice);
-});
-buttonPaper.addEventListener("click", () => {
-  const computerChoice = getComputerChoice();
-  resultDiv.textContent = playRound("paper", computerChoice);
-});
-buttonScissors.addEventListener("click", () => {
-  const computerChoice = getComputerChoice();
-  resultDiv.textContent = playRound("scissors", computerChoice);
-});
+  const result = playRound(humanChoice, computerChoice);
+
+  if (result === true) {
+    roundResultDiv.textContent = "Human wins!";
+    humanScore++;
+  } else if (result === false) {
+    roundResultDiv.textContent = "Computer wins!";
+    computerScore++;
+  } else {
+    roundResultDiv.textContent = "It's a tie!";
+  }
+  scoreDiv.textContent =
+    "Score -> HUMAN: " + humanScore + " Computer: " + computerScore;
+
+  if (humanScore === 5) {
+    roundResultDiv.textContent = "HUMAN WINS THE GAME!";
+    humanScore = 0;
+    computerScore = 0;
+  } else if (computerScore === 5) {
+    roundResultDiv.textContent = "COMPUTER WINS THE GAME!";
+    humanScore = 0;
+    computerScore = 0;
+  }
+};
+
+buttonRock.addEventListener("click", () => handleClick("rock"));
+buttonPaper.addEventListener("click", () => handleClick("paper"));
+buttonScissors.addEventListener("click", () => handleClick("scissors"));
