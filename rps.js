@@ -59,26 +59,36 @@ const buttonScissors = document.createElement("button");
 buttonScissors.id = "scissors";
 const roundResultDiv = document.createElement("div");
 const scoreDiv = document.createElement("div");
+const trackerDiv = document.createElement("div");
 
 buttonRock.textContent = "Rock";
 buttonPaper.textContent = "Paper";
 buttonScissors.textContent = "Scissors";
 roundResultDiv.id = "round-result";
 scoreDiv.id = "score";
+trackerDiv.id = "tracker";
 
 body.appendChild(buttonRock);
 body.appendChild(buttonPaper);
 body.appendChild(buttonScissors);
+body.appendChild(trackerDiv);
 body.appendChild(roundResultDiv);
 body.appendChild(scoreDiv);
 
 let humanScore = 0;
 let computerScore = 0;
+const emojis = {
+  rock: "✊",
+  paper: "✋",
+  scissors: "✌️",
+};
 
 handleClick = (humanChoice) => {
-  if (humanScore === 5 || computerScore === 5) return;
-
   const computerChoice = getComputerChoice();
+
+  trackerDiv.textContent =
+    "PLAYER -> " + emojis[humanChoice] + " vs " + emojis[computerChoice] + " <- COMPUTER";
+
   const result = playRound(humanChoice, computerChoice);
 
   if (result === true) {
