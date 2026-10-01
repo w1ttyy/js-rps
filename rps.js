@@ -82,7 +82,7 @@ handleClick = (humanChoice) => {
   const result = playRound(humanChoice, computerChoice);
 
   if (result === true) {
-    roundResultDiv.textContent = "Human wins!";
+    roundResultDiv.textContent = "Player wins!";
     humanScore++;
   } else if (result === false) {
     roundResultDiv.textContent = "Computer wins!";
@@ -91,10 +91,10 @@ handleClick = (humanChoice) => {
     roundResultDiv.textContent = "It's a tie!";
   }
   scoreDiv.textContent =
-    "Score -> HUMAN: " + humanScore + " Computer: " + computerScore;
+    "Score -> Player: " + humanScore + " Computer: " + computerScore;
 
   if (humanScore === 5) {
-    roundResultDiv.textContent = "HUMAN WINS THE GAME!";
+    roundResultDiv.textContent = "PLAYER WINS THE GAME!";
     humanScore = 0;
     computerScore = 0;
   } else if (computerScore === 5) {
