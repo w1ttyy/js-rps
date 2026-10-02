@@ -22,7 +22,7 @@ button:hover {
 }
 
 #round-result {
-  font-size: 32px;
+  font-size: 40px;
   font-weight: bold;
   margin-top: 40px;
 }
@@ -34,5 +34,11 @@ button:hover {
 
 #tracker {
   margin-top: 30px;
-  font-size: 40px;
+  font-size: 30px;
+}
+
+.heading {
+  font-size: 50px;
+  font-weight: bold;
+  margin-bottom: 50px;
 }
